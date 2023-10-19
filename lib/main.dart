@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_app_10a/kernel/widgets/navigation/bottom_navigation_tab.dart';
+import 'package:learning_app_10a/kernel/widgets/navigation/menu.dart';
 import 'package:learning_app_10a/kernel/widgets/splash/splash.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, //quita la etiquet roja de "DEBUG" de las vistas
       initialRoute: '/',
       routes: {
         '/': (context)=> const Splash(title: "cargando..."),
@@ -22,23 +22,3 @@ class MainApp extends StatelessWidget {
   } 
 }
 
-class Menu extends StatefulWidget{
-  const Menu({super.key});
-
-  @override
-  State<Menu> createState() => _MenuState();
-}
-
-class _MenuState extends State<Menu> {
-  int _selectedIndex =0;
-  void _onItemTapped(int index){
-
-  }
-  @override
-  Widget build(BuildContext context) {
-    return  Scaffold(
-      body:const Center(child: Text('Menu'),),
-      bottomNavigationBar: BottomNavigationTab(selectedIndex: _selectedIndex, onItemTapped:_onItemTapped ,),
-    );
-  }
-}

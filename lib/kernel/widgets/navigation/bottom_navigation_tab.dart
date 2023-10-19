@@ -12,10 +12,12 @@ class BottomNavigationTab extends StatelessWidget{
   Widget build(BuildContext context) {
     return BottomNavigationBar(items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio'),
-      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'perfil')
+      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
+      BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Configuración')
     ],
     currentIndex: selectedIndex, //contiene el indice en el cual se tiene en la lista
-    selectedItemColor: ColorsApp.primaryColor,
+    selectedItemColor: ColorsApp.successColor, 
+    unselectedItemColor: ColorsApp.primaryColor, //pone color a los iconos que no estan seleccionando
     onTap: onItemTapped, //se ejecuta cada que el usuario da clic 
     );
   }
