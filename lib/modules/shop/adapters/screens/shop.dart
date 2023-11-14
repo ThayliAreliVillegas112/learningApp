@@ -4,9 +4,15 @@ import 'package:learning_app_10a/modules/shop/adapters/screens/widgets/container
 
 class Shop extends StatelessWidget{
   const Shop({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> item = {
+    'title':'Iphone 10',
+    'description': 'Nuevo Iphone 10 con pantalla tactl de retina',
+    'initialRating': 4.5,
+    'imageUri': 'assets/images/utez-logo.png'
+    };
     return  Scaffold(
       appBar: AppBar(title: Text('Tienda de halcón'),
       backgroundColor: ColorsApp.primaryColor,
