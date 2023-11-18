@@ -9,15 +9,18 @@ class DetailShop extends StatelessWidget{
   Widget build(BuildContext context) {
     final dynamic rawArguments = ModalRoute.of(context)!.settings.arguments;
     final Map<String, dynamic>arguments = (rawArguments as Map<String, dynamic>?) ?? {};
-    final title = arguments['text'] ?? '';
+    final title = arguments['title'] ?? '';
     final description = arguments['description'] ?? '';
     final initialRating = arguments['initialRating'] ?? 0.0;
     final imageUri = arguments['imageUri'] ?? 'assets/images/utez-logo.png';
+    final price = arguments['price'] ?? 0.0;
     double widthImage = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(title: Text(title), backgroundColor: ColorsApp.primaryColor, foregroundColor: Colors.white,),
       body: Column(
         children: [
+          
           Image.asset(imageUri, width: widthImage, height:120, fit: BoxFit.fitWidth),
           const SizedBox(
             height: 8,
@@ -36,20 +39,25 @@ class DetailShop extends StatelessWidget{
                   )
                 ),
                 const Spacer(),
-                RatingBar.builder(
-                  initialRating: initialRating,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemSize: 8,
-                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                  ),
-                  updateOnDrag: false,
-                  onRatingUpdate: (double value) {},
+                Column(
+                  children: [
+                    Text('\$ $price'),
+                    RatingBar.builder(
+                      initialRating: initialRating,
+                      minRating: 1,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 8,
+                      itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      updateOnDrag: false,
+                      onRatingUpdate: (double value) {},
+                    ),
+                  ],
                 )
               ],
             ),
@@ -62,7 +70,17 @@ class DetailShop extends StatelessWidget{
             style: const TextStyle(
               fontSize: 12, color: Colors.black45
             ),
-          )
+          ),
+          ElevatedButton(onPressed: (){}, child: const Text('Agregar al carrito'),
+          style: OutlinedButton.styleFrom(
+              foregroundColor: ColorsApp.successColor,
+              backgroundColor: Colors.white,
+              side: const BorderSide(color: ColorsApp.successColor),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),),
+            //AQUI ME FALTA ALGO
         ],
       ),
     );
